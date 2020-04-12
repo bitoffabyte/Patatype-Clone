@@ -6,12 +6,22 @@
     <title>Patatype clone</title>
     <script type = "text/javascript" src="paper-full.min.js"></script>
     <script type="text/paperscript" canvas="myCanvas">
+        var circles = [];
         function onKeyDown(event) {
             var x = Math.floor(Math.random() * view.size.width);
             var y = Math.floor(Math.random() * view.size.height);
             console.log(x,y)
-            var circle2 = new Path.Circle(new Point(x,y),10);
+            var circle2 = new Path.Circle(new Point(x,y),200);
             circle2.fillColor = randomColor();
+            circles.push(circle2);
+  
+        }
+        function onFrame(event) {
+            for(var i = 0; i<circles.length; i++){
+                circles[i].fillColor.hue += 1;
+                circles[i].scale(.9);
+            }
+
         }
         function randomColor(){
             var r = Math.floor(Math.random()*256);
