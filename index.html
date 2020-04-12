@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patatype clone</title>
+    <script type = "text/javascript" src="paper-full.min.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+        function onKeyDown(event) {
+            var x = Math.floor(Math.random() * view.size.width);
+            var y = Math.floor(Math.random() * view.size.height);
+            console.log(x,y)
+            var circle2 = new Path.Circle(new Point(x,y),10);
+            circle2.fillColor = randomColor();
+        }
+        function randomColor(){
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return "rgb("+r+", "+g+", "+b+")";
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>
